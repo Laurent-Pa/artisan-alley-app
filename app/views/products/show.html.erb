@@ -6,6 +6,9 @@
     <li>Adress: <%= @product.adress%></li>
     <li>In stock:<%= @product.stock_quantity%></li>
     <li>Price: <%= @product.price%></li>
+    <%= @product.photos.each do |photo|%>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
   </ul>
 <%= link_to "Back to Products", products_path %>
 <%= link_to "Edit", edit_product_path %>
