@@ -1,0 +1,7 @@
+<ul>
+  <h2>Coucou</h2>
+  <% @orders.each do |order| %>
+    <li><%= order.product_id %></li>
+    <%= link_to "Edit", order_path(order) %>
+  <% end %>
+</ul>
