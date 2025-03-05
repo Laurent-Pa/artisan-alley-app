@@ -2,4 +2,6 @@
 <% @products.each do |product| %>
   <p><%= link_to product.name, product_path(product) %></p>
 <% end %>
-<%= link_to "Add New Product",  new_product_path %>
+<% if current_user.artisan? %>
+  <%= link_to "Add New Product",  new_product_path %>
+<% end %>

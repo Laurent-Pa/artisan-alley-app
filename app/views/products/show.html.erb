@@ -8,9 +8,11 @@
     <li>Price: <%= @product.price%></li>
     <%# <%= @product.photos.each do |photo|%>
       <%# <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-    <%# <% end %>  
+    <%# <% end %>
   </ul>
 <%= link_to "Back to Products", products_path %>
+<% if current_user.artisan? %>
 <%= link_to "Edit", edit_product_path %>
 <%= link_to "Delete", product_path(@product), class: "btn btn-outline-danger",
         data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+<% end %>
