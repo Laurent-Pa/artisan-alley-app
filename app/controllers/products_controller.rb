@@ -1,6 +1,8 @@
 class ProductsController < ApplicationController
   # before_action :set_params[:show, :edit, :create, :destroy]
-  skip_before_action :authenticate_user!, only: :index
+  before_action :check_if_artisan, only: [:new, :create, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
     @products = Product.all
   end
@@ -39,10 +41,17 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :price, :adress, photos: [])
+    params.require(:product).permit(:name, :description, :price, :adress, :photo)
   end
 
   def set_params
     @product = Product.find(params[:id])
+  end
+
+  def check_if_artisan
+    unless current_user.artisan?
+      flash[:alert] = "Accès réservé aux artisans."
+      redirect_to root_path
+    end
   end
 end
