@@ -3,9 +3,3 @@
 <p><%= @order.customer_id %></p>
 <p><%= @order.ordered_quantity %></p>
 <p><%= @order.total_price %></p>
-
-
-<%= link_to "Delete",
-    order_path(@order),
-    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-%>

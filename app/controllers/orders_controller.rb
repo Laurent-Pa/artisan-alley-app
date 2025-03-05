@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   def index
     @orders = Order.all
+    @products = product_id(@products)
   end
 
   def show
@@ -17,16 +18,10 @@ class OrdersController < ApplicationController
     redirect_to orders_path(@order)
   end
 
-  def destroy
-    @order = Order.find(params[:id])
-    @order.destroy
-    redirect_to orders_path, status: :see_other
-  end
-
   private
 
   def order_params
-    params.require(:order).permit(:product_id, :customer_id, :ordered_quantity, :total_price)
+    params.require(:order).permit(:product_id, :user_id, :ordered_quantity, :total_price)
   end
 
 end
