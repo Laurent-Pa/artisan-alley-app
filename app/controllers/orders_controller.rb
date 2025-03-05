@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   def index
     @orders = Order.all
-    @products = product_id(@products)
+    # @products = product_id(@products)
   end
 
   def show
@@ -13,15 +13,20 @@ class OrdersController < ApplicationController
   end
 
   def create
+    @order = Order.new()
     @order = Order.new(order_params)
-    @order.save
-    redirect_to orders_path(@order)
+    raise
+    # # @order.product_id = #
+    # # @order.user_id =
+
+    # @order.save
+    # redirect_to orders_path(@order)
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:product_id, :user_id, :ordered_quantity, :total_price)
+    params.require(:order).permit(:ordered_quantity)
   end
 
 end

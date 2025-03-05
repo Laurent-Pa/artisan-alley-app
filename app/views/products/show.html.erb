@@ -17,3 +17,8 @@
             data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
     <% end %>
 <% end %>
+
+<%= simple_form_for @order do |f| %>
+  <%= f.input :ordered_quantity %>
+  <%= f.submit "Order" %>
+<% end %>
