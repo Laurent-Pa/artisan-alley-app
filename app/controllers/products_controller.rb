@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   # before_action :set_params[:show, :edit, :create, :destroy]
   # before_action :authenticate_user!
   before_action :check_if_artisan, only: [:new, :create, :edit, :update, :destroy]
-
+  skip_before_action :authenticate_user!, only: :index
   def index
     @products = Product.all
   end
@@ -41,7 +41,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :price, :adress, photos: [])
+    params.require(:product).permit(:name, :description, :price, :adress, :photo)
   end
 
   def set_params
