@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   # before_action :set_params[:show, :edit, :create, :destroy]
+  skip_before_action :authenticate_user!, only: :index
   def index
     @products = Product.all
   end
