@@ -1,0 +1,12 @@
+<h1>Edit <%= @product.id %></h1>
+<%= simple_form_for @product do |f| %>
+  <%= f.input :name %>
+  <%= f.input :photo_id %>
+  <%= f.input :description %>
+  <%= f.input :adress %>
+  <%= f.input :stock_quantity %>
+  <%= f.input :price %>
+  <%= f.submit "Edit" %>
+<% end %>
+<%= link_to "Back to Products", products_path %>
+
