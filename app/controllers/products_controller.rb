@@ -1,8 +1,8 @@
 class ProductsController < ApplicationController
   # before_action :set_params[:show, :edit, :create, :destroy]
-  # before_action :authenticate_user!
   before_action :check_if_artisan, only: [:new, :create, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
     @products = Product.all
   end
