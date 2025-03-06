@@ -6,4 +6,8 @@ class PagesController < ApplicationController
   def my_products
     @products = current_user.products
   end
+  def my_profile
+    @user = current_user
+  end
+
 end
