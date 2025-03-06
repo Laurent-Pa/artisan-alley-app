@@ -7,6 +7,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @product = Product.find(@order.product.id)
   end
 
   def new
@@ -16,7 +17,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.save
-    redirect_to orders_path
+    redirect_to order_path(@order)
   end
 
   private

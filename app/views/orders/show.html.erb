@@ -1,5 +1,14 @@
-<h2>Order</h2>
-<p><%= @order.product_id %></p>
-<p><%= @order.customer_id %></p>
-<p><%= @order.ordered_quantity %></p>
-<p><%= @order.total_price %></p>
+<div class="container w-50">
+<h1>Merci pour votre commande</h1>
+<div class="order-product">
+  <%= cl_image_tag @product.photo_id.to_s, height: 500, width: 500, crop: :fill %>
+  <div class="order-product-infos">
+    <div class="order-product-infos-text">
+      <p>référence commande : <%= @order.product_id %></p>
+      <p>Le prix de votre commande est de : <%= @order.total_price %></p>
+    </div>
+  </div>
+
+
+
+</div>
