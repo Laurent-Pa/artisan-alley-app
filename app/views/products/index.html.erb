@@ -15,10 +15,5 @@
         <% end %>
       </div>
     <% end %>
-    <% if user_signed_in? %>
-      <% if current_user.artisan? %>
-        <%= link_to "Add New Product",  new_product_path %>
-      <% end %>
-    <% end %>
   </div>
 </div>
