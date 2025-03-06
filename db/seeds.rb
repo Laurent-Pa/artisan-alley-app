@@ -13,8 +13,8 @@
 # You must add gem faker to gemfile and run a bundle install
 
 # Uncomment theses ligns according to want you want to create
-# require 'faker'
-# Faker::Config.locale = 'fr' # to have a french cellphone number
+require 'faker'
+Faker::Config.locale = 'fr' # to have a french cellphone number
 
 # 1. we create fake artisans/users (because a product belongs to a user)
 
@@ -41,37 +41,35 @@ FAKE_PICS_ID = [
   "hgfarsujxjzv42112ivbt8wa5kre"
   ]
 
-puts "creating 3 fake artisans"
+# puts "creating 3 fake artisans"
 3.times do
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
   email = "#{first_name.downcase}.#{last_name.downcase}@artisan.fr"
 
-  artisan = User.create(
+  user = User.create!(
     first_name: first_name,
     last_name: last_name,
     phone_number: Faker::PhoneNumber.cell_phone,
     user_type: "artisan",
     email: email,
-    encrypted_password: "123456"
+    password: "123456"
   )
-  puts "user #{first_name.downcase}.#{last_name.downcase} created"
+  puts "user #{first_name.downcase} #{last_name.downcase} created"
+
 
   # 2. we create fake products /!\ the model product must be created
   puts "creation des produits de cet artisan"
   5.times do
-    user_id = user.id
-    quantity = (1..5)
-    Product.create(
-      user_id: artisan_id,
-      name: Faker::Book.title,
-      stock_quantity: quantity,
-      adress: FAKE_ADRESSES.sample,
-      description: Faker::Quote.yoda,
+    Product.create!(
+      user_id: user.id,
+      name: "Joconde",
+      stock_quantity: (1..5).to_a.sample,
+      adress: "41 Rue Borie, 33300 Bordeaux",
+      description: "oeuvre d'art",
       photo_id: FAKE_PICS_ID.sample,
-      price: (0..200)
+      price: (0..200).to_a.sample
     )
-    puts "5 products created!"
   end
 end
 puts "you have created 10 fake artisans with 5 for products each"
