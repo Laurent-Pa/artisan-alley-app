@@ -9,4 +9,7 @@ Rails.application.routes.draw do
 
   get "/my-products", to: "pages#my_products"
   resources :products
+  resources :orders
+
+
 end

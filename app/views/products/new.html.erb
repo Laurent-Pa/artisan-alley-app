@@ -1,10 +1,12 @@
-<h1>Add A New Product</h1>
-<%= simple_form_for @product do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :adress %>
-  <%= f.input :stock_quantity %>
-  <%= f.input :price %>
-  <%= f.input :photo, as: :file %>
-  <%= f.submit "Add Your Product" %>
-<% end %>
+<div class="container">
+  <h1>Add A New Product</h1>
+  <%= simple_form_for @product do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :adress %>
+    <%= f.input :stock_quantity %>
+    <%= f.input :price %>
+    <%= f.input :photo, as: :file %>
+    <%= f.submit "Add Your Product" %>
+  <% end %>
+</div>
