@@ -1,12 +1,18 @@
-<h1><%= @product.name %></h1>
-  <ul>
+  <div class="container w-50">
     <%#  à faire une fois le User done <li>Selling by <%= @product.user.name %>
-    <%= cl_image_tag @product.photo.key.to_s, height: 300, width: 400, crop: :fill %>
-    <li>Description: <%= @product.description %></li>
-    <li>Adress: <%= @product.adress%></li>
-    <li>In stock:<%= @product.stock_quantity%></li>
-    <li>Price: <%= @product.price%>$</li>
-  </ul>
+    <h1><%= @product.name %></h1>
+    <div class="card-trip m-3">
+          <%= cl_image_tag @product.photo.key.to_s, height: 500, width: 500, crop: :fill %>
+          <div class="card-trip-infos">
+            <div>
+              <h2><%= @product.name %></h2>
+              <p>in stock: <%= @product.stock_quantity %></p>
+            </div>
+            <h2 class="card-trip-pricing"><%= @product.price%>$</h2>
+          </div>
+      </div>
+  </div>
+<%= link_to "Back to Products", products_path %>
 <% if user_signed_in? %>
   <% if current_user.artisan? %>
     <%=link_to'Edit A Product', edit_product_path, class: "btn btn-outline-primary"%>
