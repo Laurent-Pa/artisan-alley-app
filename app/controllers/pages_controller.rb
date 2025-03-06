@@ -6,5 +6,4 @@ class PagesController < ApplicationController
   def my_products
     @products = current_user.products
   end
-
 end

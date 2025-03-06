@@ -15,7 +15,7 @@
 <%= link_to "Back to Products", products_path %>
 <% if user_signed_in? %>
   <% if current_user.artisan? %>
-    <%= link_to "Edit", edit_product_path %>
+    <%=link_to'Edit A Product', edit_product_path, class: "btn btn-outline-primary"%>
     <%= link_to "Delete", product_path(@product), class: "btn btn-outline-danger",
             data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
     <% end %>
