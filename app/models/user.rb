@@ -6,9 +6,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  # a décommenter dès que la base de donnée est créée
-  #has_many :products
-
   # enumerable pour stocker les types d'utilisateurs (choix lors du sign up)
   # /!\ stocké en integer dans bdd donc ds table user: t.integer "user_type"
   enum user_type: %i[artisan customer]

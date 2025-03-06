@@ -15,14 +15,13 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    raise
     @order.save
+    redirect_to orders_path
   end
 
   private
-
   def order_params
-    params.require(:order).permit(:ordered_quantity, :product_id, :price)
+    params.require(:order).permit(:ordered_quantity, :product_id, :user_id, :total_price)
   end
 
 end

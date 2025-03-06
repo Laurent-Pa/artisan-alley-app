@@ -1,33 +1,32 @@
-<h1><%= @product.name %></h1>
-  <ul>
+  <div class="container w-50">
     <%#  à faire une fois le User done <li>Selling by <%= @product.user.name %>
-    <li>Description: <%= @product.description %></li>
-    <li>Adress: <%= @product.adress%></li>
-    <li>In stock:<%= @product.stock_quantity%></li>
+    <h1><%= @product.name %></h1>
+    <div class="card-trip m-3">
+          <%= cl_image_tag @product.photo_id.to_s, height: 500, width: 500, crop: :fill %>
+          <div class="card-trip-infos">
+            <div>
+              <h2><%= @product.name %></h2>
+              <p>in stock: <%= @product.stock_quantity %></p>
+            </div>
+            <h2 class="card-trip-pricing"><%= @product.price%>$</h2>
+          </div>
+      </div>
+      <% if user_signed_in? %>
+        <% if current_user.artisan? %>
+          <%=link_to'Edit A Product', edit_product_path, class: "btn btn-outline-primary"%>
+          <%= link_to "Delete", product_path(@product), class: "btn btn-outline-danger",
+                  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+          <% end %>
+      <% end %>
 
-    <li>Price: <%= @product.price%>$</li>
-
-  </ul>
-<%= cl_image_tag @product.photo.key, height: 300, width: 400, crop: :fill %>
-<%= link_to "Back to Products", products_path %>
-<% if user_signed_in? %>
-  <% if current_user.artisan? %>
-    <%= link_to "Edit", edit_product_path %>
-    <%= link_to "Delete", product_path(@product), class: "btn btn-outline-danger",
-            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-    <% end %>
-<% end %>
-
-<%= simple_form_for @order, html: {data: {controller: "order"}} do |f| %>
-
-
-  <%= f.input :ordered_quantity, input_html: { data: { action: "input->order#calculatTotal", order_target: "quantity" } } %>
-  <div data-order-target="price" data-price="<%= @product.price%>"></div>
-
-  <%= f.hidden_field :product_id, value: @product.id %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-
-  <div class="total" data-order-target="total">bla</div>
-  <%= f.hidden_field :total_price, data: { order_target: "hiddenTotal"} %>
-  <%= f.submit "Order" %>
-<% end %>
+  <%= simple_form_for @order, html: {data: {controller: "order"}} do |f| %>
+    <%= f.input :ordered_quantity, input_html: { data: { action: "input->order#calculatTotal", order_target: "quantity" } } %>
+    <div data-order-target="price" data-price="<%= @product.price%>"></div>
+    <%= f.hidden_field :product_id, value: @product.id %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <p>Total : </p>
+    <div class="total" data-order-target="total"></div>
+    <%= f.hidden_field :total_price, data: { order_target: "hiddenTotal"} %>
+    <%= f.submit "Order" %>
+  <% end %>
+</div>
