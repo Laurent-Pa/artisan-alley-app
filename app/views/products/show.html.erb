@@ -1,14 +1,12 @@
 <h1><%= @product.name %></h1>
   <ul>
     <%#  à faire une fois le User done <li>Selling by <%= @product.user.name %>
+    <%= cl_image_tag @product.photo.key.to_s, height: 300, width: 400, crop: :fill %>
     <li>Description: <%= @product.description %></li>
     <li>Adress: <%= @product.adress%></li>
     <li>In stock:<%= @product.stock_quantity%></li>
-
     <li>Price: <%= @product.price%>$</li>
-
   </ul>
-<%= cl_image_tag @product.photo.key, height: 300, width: 400, crop: :fill %>
 <%= link_to "Back to Products", products_path %>
 <% if user_signed_in? %>
   <% if current_user.artisan? %>
