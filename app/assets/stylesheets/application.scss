@@ -10,3 +10,41 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+
+.order-product {
+  overflow: hidden;
+  height: 120px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+}
+
+.order-product img {
+  height: 1OOpx;
+  width: 120px;
+  object-fit: cover;
+}
+
+.order-product h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.order-product p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-product .order-product-infos {
+  padding: 16px;
+}
+
+.order-product-infos-text {
+  padding: 50px;
+}
