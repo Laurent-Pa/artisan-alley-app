@@ -1,3 +1,4 @@
+
 class OrdersController < ApplicationController
   def index
     @orders = Order.all
@@ -13,20 +14,15 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new()
     @order = Order.new(order_params)
     raise
-    # # @order.product_id = #
-    # # @order.user_id =
-
-    # @order.save
-    # redirect_to orders_path(@order)
+    @order.save
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:ordered_quantity)
+    params.require(:order).permit(:ordered_quantity, :product_id, :price)
   end
 
 end
