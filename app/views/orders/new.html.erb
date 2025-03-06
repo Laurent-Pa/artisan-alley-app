@@ -1,0 +1,7 @@
+<%= simple_form_for(@order) do |f| %>
+  <%= f.input :product_id %>
+  <%= f.input :customer_id %>
+  <%= f.input :ordered_quantity %>
+  <%= f.input :total_price %>
+  <%= f.submit %>
+<% end %>

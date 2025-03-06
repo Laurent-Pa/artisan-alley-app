@@ -18,4 +18,15 @@
                   data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
           <% end %>
       <% end %>
-  </div>
+
+  <%= simple_form_for @order, html: {data: {controller: "order"}} do |f| %>
+    <%= f.input :ordered_quantity, input_html: { data: { action: "input->order#calculatTotal", order_target: "quantity" } } %>
+    <div data-order-target="price" data-price="<%= @product.price%>"></div>
+    <%= f.hidden_field :product_id, value: @product.id %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <p>Total : </p>
+    <div class="total" data-order-target="total"></div>
+    <%= f.hidden_field :total_price, data: { order_target: "hiddenTotal"} %>
+    <%= f.submit "Order" %>
+  <% end %>
+</div>
