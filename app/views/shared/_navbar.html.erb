@@ -11,8 +11,8 @@
         <% if user_signed_in? %>
           <% if current_user.artisan? %>
             <li class="nav-item">
-           <%=link_to'My Products', my_products_path, class: "btn btn-lg btn-primary"%>
-            <%=link_to'Add Products', new_product_path, class: "btn btn-lg btn-primary"%>
+           <%=link_to'My Products', my_products_path, class: "btn btn-outline-primary"%>
+            <%=link_to'Add Products', new_product_path, class: "btn btn-outline-primary"%>
               <span class="nav-link">Bonjour <%= current_user.first_name %> (Artisan)</span>
           <li class="nav-item dropdown">
 
