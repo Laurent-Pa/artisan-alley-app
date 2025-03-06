@@ -6,6 +6,14 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
+    @markers = Product.geocoded.map do |product|
+      {
+        lat: product.latitude,
+        lng: product.longitude,
+        info_window_html: render_to_string(partial: "products/info_window", locals: { product: product }),
+        marker_html: render_to_string(partial: "products/marker")
+      }
+    end
   end
 
   def show
