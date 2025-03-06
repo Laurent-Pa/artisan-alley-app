@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   get "/my-products", to: "pages#my_products"
+  get "/my-profile", to: "pages#my_profile"
   resources :products
   resources :orders
 
