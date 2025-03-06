@@ -4,7 +4,7 @@
     <% @products.each do |product| %>
       <div class="card-trip m-3 col-sm">
         <%= link_to product_path(product), class: "text-decoration-none text-reset" do %>
-          <%= cl_image_tag product.photo.key.to_s, height: 300, width: 400, crop: :fill %>
+          <%= cl_image_tag product.photo_id.to_s, height: 300, width: 400, crop: :fill %>
           <div class="card-trip-infos">
             <div>
               <h2><%= product.name %></h2>
