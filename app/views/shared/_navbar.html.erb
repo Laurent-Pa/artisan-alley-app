@@ -71,7 +71,6 @@
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
             <li><%= link_to "My Profile", my_profile_path, class: "dropdown-item" %></li>
             <% if current_user.artisan? %>
-              <li><%= link_to "Map my Products", "#", class: "dropdown-item" %></li>
             <% end %>
             <li><%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item text-danger" %></li>
           </ul>
