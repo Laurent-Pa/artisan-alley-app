@@ -6,9 +6,12 @@
     <div class="image-item">
       <%= cl_image_tag @product.photo_id.to_s %>
         <div class="order-product-infos">
-          <p>référence commande : <%= @order.product_id %></p>
-          <p>Le prix de votre commande est de : <%= @order.total_price %></p>
+          <p class="fst-italic">Le numéro de votre commande est : <strong><%= @order.product_id %></strong></p>
+          <p class="fst-italic">Le prix de votre commande est : <strong><%= @order.total_price %></strong></p>
         </div>
       </div>
-    </div>
+</div>
+
+<div class="btn">
+<%= link_to "Products", products_path, class: "btn btn-gradient" %>
 </div>
