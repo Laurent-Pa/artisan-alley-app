@@ -17,7 +17,11 @@
           <% if current_user.artisan? %>
             <!-- Artisan Links -->
             <li class="nav-item">
+            <% if request.fullpath == "/my-products" %>
+              <%= link_to 'All Products', products_path, class: "btn btn-outline-light me-2" %>
+            <% else %>
               <%= link_to 'My Products', my_products_path, class: "btn btn-outline-light me-2" %>
+            <% end %>
             </li>
             <li class="nav-item">
               <%= link_to 'Add Products', new_product_path, class: "btn btn-outline-light" %>
