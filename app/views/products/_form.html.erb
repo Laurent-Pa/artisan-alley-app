@@ -1,12 +1,16 @@
-  <%= simple_form_for @product do |f| %>
-    <%= f.input :name %>
-    <%= f.input :description %>
-    <%= f.input :adress,
-      input_html: {data: {adress_autocomplete_target: "adress"}, class: "d-none mapboxgl-ctrl-geocoder"},
-      wrapper_html: {data: {controller: "adress-autocomplete", adress_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}, }
-    %>
-    <%= f.input :stock_quantity %>
-    <%= f.input :price %>
-    <%= f.input :photo, as: :file %>
-    <%= f.submit "Add Your Product" %>
-  <% end %>
+<div class="container">
+  <div class="newproduct">
+    <%= simple_form_for @product do |f| %>
+      <%= f.input :name %>
+      <%= f.input :description %>
+      <%= f.input :adress,
+        input_html: {data: {adress_autocomplete_target: "adress"}, class: "d-none mapboxgl-ctrl-geocoder"},
+        wrapper_html: {data: {controller: "adress-autocomplete", adress_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}, }
+      %>
+      <%= f.input :stock_quantity %>
+      <%= f.input :price %>
+      <%= f.input :photo, as: :file %>
+      <%= f.submit "Add Your Product" %>
+    <% end %>
+  </div>
+</div>

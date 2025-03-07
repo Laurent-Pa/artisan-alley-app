@@ -1,7 +1,39 @@
 .mapboxgl-ctrl-geocoder {
   max-width: none;
   width: 100%;
-  border: 1px solid rgb(0, 0, 0);
+  border: 1px solid rgb(180, 176, 176);
   box-shadow: none;
   background-color: transparent;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Style pour la section newproduct */
+.newproduct {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh; /* Ajuste la hauteur minimale pour centrer verticalement */
+}
+
+/* Style pour le formulaire à l'intérieur de newproduct */
+.newproduct .form-container {
+  width: 100%;
+  max-width: 500px; /* Ajuste la largeur maximale du formulaire */
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style du titre du formulaire */
+.newproduct .form-title {
+  font-size: 1.8rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 1.5rem;
 }
