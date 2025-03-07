@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <!-- Logo -->
     <%= link_to products_path, class: "navbar-brand" do %>
-      <%= image_tag "logo_alleyapp.jpg", alt: "Logo", class: "logo-img" %>
+      <%= image_tag "logo_alleyapp50x50.jpg", alt: "Logo", class: "logo-img" %>
     <% end %>
 
     <!-- Toggle button for mobile -->
@@ -43,7 +43,7 @@
       <ul class="navbar-nav">
         <li class="nav-item">
           <% if user_signed_in? %>
-          <%= link_to order_path(current_user), class: "btn btn-outline-warning position-relative" do %>
+            <%= link_to order_path(current_user.current_order.id), class: "btn btn-outline-warning position-relative" do %>
 
             <i class="fa-solid fa-cart-shopping"></i>
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
@@ -68,8 +68,6 @@
             <li><%= link_to "My Profile", my_profile_path, class: "dropdown-item" %></li>
             <% if current_user.artisan? %>
               <li><%= link_to "Map my Products", "#", class: "dropdown-item" %></li>
-            <% else %>
-              <li><%= link_to "Another Action", "#", class: "dropdown-item" %></li>
             <% end %>
             <li><%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item text-danger" %></li>
           </ul>
