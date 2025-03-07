@@ -46,15 +46,15 @@
       <!-- Cart Button -->
       <ul class="navbar-nav">
         <li class="nav-item">
-          <% if user_signed_in? %>
-            <%= link_to order_path(current_user.current_order.id), class: "btn btn-outline-warning position-relative" do %>
+          <% if user_signed_in? && current_user.orders.any? %>
+              <%= link_to order_path(current_user.current_order.id ), class: "btn btn-outline-warning position-relative" do %>
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                <%= current_user.orders.count if user_signed_in? %>
+              </span>
+          <% end %>
+        <% end %>
 
-            <i class="fa-solid fa-cart-shopping"></i>
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-              <%= current_user.orders.count if user_signed_in? %>
-            </span>
-          <% end %>
-          <% end %>
         </li>
       </ul>
 
