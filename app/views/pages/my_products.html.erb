@@ -1,9 +1,27 @@
-
 <div class="container">
-  <h1 align:center>My Products</h1>
-  <%@products.each do |product| %>
-    <li>
-      <%= link_to product.name, product_path(product)  %>
-    </li>
-  <% end %>
+  <h1>My products</h1>
+  <div class="cards-container">
+    <div class="cards">
+        <% @products.each do |product| %>
+          <div class="card-trip m-3">
+            <%= link_to product_path(product), class: "text-decoration-none text-reset" do %>
+              <%= cl_image_tag product.photo_id.to_s, class: "product_img", crop: :fill %>
+              <div class="card-trip-infos">
+                <div>
+                  <h2><%= product.name %></h2>
+                  <p>in stock: <%= product.stock_quantity %></p>
+                </div>
+                <h2><%= product.price%>€</h2>
+              </div>
+              <%# raise %>
+            <% end %>
+          </div>
+        <% end %>
+    </div>
+    <div style="width: 40%; height: 100vh;position: sticky; top: 0; margin-left: 8px;"
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
 </div>
