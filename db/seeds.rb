@@ -65,7 +65,7 @@ FAKE_PICS_ID = [
       user_id: user.id,
       name: "Joconde",
       stock_quantity: (1..5).to_a.sample,
-      adress: "41 Rue Borie, 33300 Bordeaux",
+      adress: FAKE_ADRESSES.sample,
       description: "oeuvre d'art",
       photo_id: FAKE_PICS_ID.sample,
       price: (0..200).to_a.sample
