@@ -1,0 +1,59 @@
+.card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 15px; /* Réduction de l'espacement extérieur */
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+  max-width: 300px; /* Limite la largeur de la carte pour un affichage compact */
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-header {
+  background-color: #f8f9fa;
+  padding: 15px; /* Réduction de l'espacement dans l'en-tête */
+  border-bottom: 1px solid #e9ecef;
+}
+
+.card-header img {
+  width: 60px; /* Taille réduite de l'image */
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 15px; /* Réduction de l'espacement interne */
+}
+
+.card-title {
+  font-size: 1rem; /* Taille réduite du titre */
+  font-weight: 600;
+  margin-bottom: 8px; /* Espacement réduit sous le titre */
+  color: #333;
+}
+
+.card-text {
+  font-size: 0.9rem; /* Taille réduite du texte */
+  color: #28a745;
+  font-weight: 500;
+  margin-bottom: 12px; /* Espacement réduit sous le texte */
+}
+
+.btn-outline-primary {
+  color: #007bff;
+  border-color: #007bff;
+  padding: 5px 10px; /* Bouton plus petit */
+  font-size: 0.8rem; /* Taille de texte encore plus compacte */
+  font-weight: 500;
+  border-radius: 4px; /* Coins légèrement arrondis */
+  transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+  color: #ffffff;
+  background-color: #007bff;
+}
