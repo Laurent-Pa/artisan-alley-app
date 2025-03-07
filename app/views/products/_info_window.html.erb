@@ -1,8 +1,10 @@
-<div class="card-trip m-3">
-  <p><%= cl_image_tag product.photo_id.to_s, height: 80, width: 80, crop: :fill %></p>
-    <div class="card-trip-infos">
-      <p><%= product.name %></p>
-      <p class="card-trip-pricing"><%= product.price%>€</p>
-    </div>
-  <%=link_to'More Details', product_path(product), class: "btn btn-outline-primary"%>
+<div class="card text-center">
+  <div class="card-header">
+    <p><%= cl_image_tag product.photo_id.to_s, height: 80, width: 80, crop: :fill %></p>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= product.name %></h5>
+    <p class="card-text"><%= product.price%>€</p>
+    <%=link_to'Details', product_path(product), class: "btn btn-outline-primary"%>
+  </div>
 </div>
