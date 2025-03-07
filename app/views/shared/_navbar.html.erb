@@ -1,50 +1,80 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
+    <!-- Logo -->
     <%= link_to products_path, class: "navbar-brand" do %>
-      <%= image_tag "https://res.cloudinary.com/dj72qp4q4/image/upload/v1741181944/development/r8swadgok1pk4c8qrqfe.jpg" %>
+      <%= image_tag "/assets/images/logo_alleyapp.jpg", alt: "Logo", class: "logo-img" %>
     <% end %>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+    <!-- Toggle button for mobile -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <!-- Navbar content -->
+    <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <% if current_user.artisan? %>
+            <!-- Artisan Links -->
             <li class="nav-item">
-           <%=link_to'My Products', my_products_path, class: "btn btn-outline-primary"%>
-            <%=link_to'Add Products', new_product_path, class: "btn btn-outline-primary"%>
-              <span class="nav-link">Bonjour <%= current_user.first_name %> (Artisan)</span>
-          <li class="nav-item dropdown">
-
-          <a href= "#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= image_tag "https://ih1.redbubble.net/image.3732440912.7460/flat,750x,075,f-pad,750x1000,f8f8f8.jpg", class: "avatar", alt: "dropdown menu" %>
-          </a>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "My Profile",my_profile_path , class: "dropdown-item" %>
-               <%= link_to "Map my products",  "#", class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </div>
-          </li>
+              <%= link_to 'My Products', my_products_path, class: "btn btn-outline-light me-2" %>
             </li>
-            <% else %>
-            <span class="nav-link">Bonjour <%= current_user.first_name %></span>
-             <li class="nav-item dropdown">
-          <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= image_tag "https://c8.alamy.com/compfr/m6b2mm/l-icone-de-l-acheteur-on-white-m6b2mm.jpg", class: "avatar", alt: "dropdown menu" %>
-          </a>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "My Profile",my_profile_path , class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </div>
-          </li>
+            <li class="nav-item">
+              <%= link_to 'Add Products', new_product_path, class: "btn btn-outline-light" %>
+            </li>
+            <li class="nav-item">
+              <span class="nav-link text-white">Bonjour <%= current_user.first_name %> (Artisan)</span>
+            </li>
+          <% else %>
+            <!-- Regular User -->
+            <li class="nav-item">
+              <span class="nav-link text-white">Bonjour <%= current_user.first_name %></span>
+            </li>
           <% end %>
         <% else %>
+          <!-- Guest User -->
           <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+            <%= link_to "Login", new_user_session_path, class: "btn btn-outline-light" %>
           </li>
         <% end %>
       </ul>
+
+      <!-- Cart Button -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <% if user_signed_in? %>
+          <%= link_to order_path(current_user), class: "btn btn-outline-warning position-relative" do %>
+
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              <%= current_user.orders.count if user_signed_in? %>
+            </span>
+          <% end %>
+          <% end %>
+        </li>
+      </ul>
+
+      <% if user_signed_in? %>
+        <!-- User Dropdown -->
+        <div class="dropdown ms-3">
+          <a href="#" class="avatar" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <%=
+            (current_user.artisan? ?
+            '<img width="50" height="50" src="https://img.icons8.com/scribby/50/work.png" alt="work"/>' :
+            '<img width="48" height="48" src="https://img.icons8.com/color/48/user.png" alt="user"/>').html_safe
+          %>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <li><%= link_to "My Profile", my_profile_path, class: "dropdown-item" %></li>
+            <% if current_user.artisan? %>
+              <li><%= link_to "Map my Products", "#", class: "dropdown-item" %></li>
+            <% else %>
+              <li><%= link_to "Another Action", "#", class: "dropdown-item" %></li>
+            <% end %>
+            <li><%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item text-danger" %></li>
+          </ul>
+        </div>
+      <% end %>
     </div>
   </div>
-</div>
+</nav>
